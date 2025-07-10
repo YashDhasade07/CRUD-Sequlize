@@ -1,0 +1,25 @@
+{
+  "name": "crud-sequlize",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashDhasade07/CRUD-Sequlize.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashDhasade07/CRUD-Sequlize/issues"
+  },
+  "homepage": "https://github.com/YashDhasade07/CRUD-Sequlize#readme",
+  "description": "",
+  "dependencies": {
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
+  }
+}
