@@ -15,9 +15,9 @@ async function seed() {
     console.log('b ', bob.id)
 
      await Post.bulkCreate([
-    { title: 'Hello World',     content: 'My first post',   UserId: alice.id },
-    { title: 'Sequelize Tips',   content: 'Advanced stuff',  UserId: alice.id },
-    { title: 'Node + Postgres',  content: 'Connection guide', UserId: bob.id },
+    { title: 'Hello World',     content: 'My first post',   userId: alice.id },
+    { title: 'Sequelize Tips',   content: 'Advanced stuff',  userId: alice.id },
+    { title: 'Node + Postgres',  content: 'Connection guide', userId: bob.id },
   ]);
 
     console.log('seeded')
