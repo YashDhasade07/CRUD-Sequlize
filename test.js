@@ -24,7 +24,7 @@ import { Post, User, sequelize } from "./server.js";
 // run()
 
 
-// ///////////
+///////////
 // User.findAll({where:{username:'Yash'},raw: true}).then((data)=>{
 //     console.log(data)
 // }).catch(console.log)
@@ -57,5 +57,170 @@ import { Post, User, sequelize } from "./server.js";
 
 
 ////////////////////
-User.update({email: 'yashdhasade@gmail.com'},{where: {id: 3}})
+// User.update({email: 'yashdhasade@gmail.com'},{where: {id: 3}})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+// ///////////
+// Post.destroy({where:{id: 2}})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+// //////////////////
+// User.findAll({where: {id: {[Op.gt] : 1}}, raw: true})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+// ////////////////////
+// User.findAll({where: {age: {[Op.and]:[{[Op.gt]: 20},{[Op.lt]: 30}]}}, raw: true})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+////////////
+// User.findAll({raw:true, where:{age: {[Op.between]: [20,30]}}})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+////////////
+// User.findAll({raw:true, where:{username: {[Op.like]: 'Jui%'}}})
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch(console.log)
+
+
+//////////////
+User.findAll({include: Post,raw:true})
+.then((data)=>{
+    console.log(data)
+})
+.catch(console.log)
+
+
+//////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
