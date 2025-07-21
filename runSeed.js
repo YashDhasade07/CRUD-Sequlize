@@ -1,4 +1,4 @@
-import { Op } from "sequelize";
+import { Op, fn ,col} from "sequelize";
 import { Comment,User,Post, sequelize } from "./newServer.js";
 
 
@@ -8,8 +8,8 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 // .catch(console.log)
 
 
-// /////////////////
-// Post.create({title: 'Manali vibes', content: 'test content', userId: 6})
+/////////////////
+// Post.create({title: 'Manali vibes2', content: 'test content', userId: 1})
 // .then(console.log)
 // .catch(console.log)
 
@@ -31,45 +31,141 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 
 
 ///////////////////
-Post.findAll({raw: true, where:{title: {[Op.like]: 'S%'}}})
-.then((data)=>{
-    // data.forEach(element => {
-    //     console.log(element.username, element['posts.id'])
-    // });
-    console.log(data)
-})
-.catch(console.log)
+// Post.findAll({raw: true, where:{title: {[Op.like]: 'S%'}}})
+// .then((data)=>{
+//     // data.forEach(element => {
+//     //     console.log(element.username, element['posts.id'])
+//     // });
+//     console.log(data)
+// })
+// .catch(console.log)
 
 
+/////////////////
+// User.update({email: 'erin@schooll.edu'}, {where: {id: 5}})
+// .then(console.log)
+// .catch(console.log)
 
 
+// //////////////////
+// async function run() {
+//   let user = await Post.findOne({where: {id: 4}});
+//   user.title = 'ORM vs QueryBuilder [Updated]'
+//   await user.save()
+//   return user
+// }
+// run()
 
 
+// //////////////////
+// async function run() {
+//   let user = await User.destroy({where: {id: 4}});
+//   console.log(user)
+// }
+// run()
 
 
+// /////////////////
+// Post.destroy({where:{ userId :2}})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////////////////////
+// User.findAll({where: {age: {[Op.gt] : 25}}, raw: true})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////////////////////
+// User.findAll({where: {age: {[Op.between] : [20,30]}}, raw: true})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////////////////////
+// User.increment('age',{by : -3, where: {}})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////////////////////
+// async function run() {
+//     try {
+//         let users = await User.findAll();
+//         users.map(async (item)=>{
+//     item.age= item.age+1;
+//     await item.save();
+//     console.log(item)
+//   })
+// } catch (error) {
+//     console.log(error)
+// }
+// }
+// run()
 
 
+// //////////////////////////
+// User.findAll({
+//     attributes:[ [fn('AVG', col('age')),' averageAge']], raw: true
+// })
+// .then(console.log)
+// .catch(console.log)
 
 
+// /////////////////
+// User.findAll({where:{id:1}, include: Post, raw: true})
+// .then(console.log)
+// .catch(console.log)
 
 
+// /////////////
+// Post.findAll({include: {model: User, attributes:['username']}, raw: true})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////
+// User.findAll({attributes : [[fn('COUNT', col('id')), 'COunt']], raw: true, where:{age: {[Op.between] : [20,30]}}})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ///////////////////
+// Post.findAll({raw: true, include: [{model: Comment ,attributes:['userId','content'], include: {model: User, attributes:[`username`]}}]})
+// .then(console.log)
+// .catch(console.log)
 
 
+// ////////////////////////
+
+// async function run() {
+//     let t = await sequelize.transaction();
+//     try {
+//         let user =  await User.create({username: "Sakshi" , email: 'sakshi@gmail.com', age: 22},{transaction: t});
+//         await Post.create({title : `it's jui`, content: 'Jui ghavate', userId: user.id},{transaction: t});
+//         let post = await Post.create({title : `it's jui`, content: 'Jui ghavate', userId: user.id},{transaction: t});
+//         console.log('post: ', post)
+//         // throw new Error('hey there')
+//         t.commit()
+//         console.log(`done`)
+//     } catch (error) {
+//         t.rollback()
+//         console.log(error)
+//         console.log(`not done`)
+//     }
+// }
+
+// run()
 
 
-
+////////////////////
+async function run() {
+    let user = await User.findByPk(1);
+     let posts = await user.getPosts();
+     console.log(posts.map(post => post.get()));
+}
+run()
 
 
 
