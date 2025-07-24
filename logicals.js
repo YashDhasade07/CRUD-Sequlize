@@ -109,11 +109,11 @@
 //     // console.log('res', normalisedArr)
 //     return normalisedArr
 // }
-let i =0
-let abc =()=>{
-    i+=1
-}
-console.log(abc())
+// let i =0
+// let abc =()=>{
+//     i+=1
+// }
+// console.log(abc())
 // printArr(arr)
 
 
@@ -121,7 +121,7 @@ console.log(abc())
 
 
 
-
+Category.createProduct()
 
 
 

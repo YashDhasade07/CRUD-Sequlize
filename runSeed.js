@@ -1,5 +1,5 @@
-import { Op, fn ,col} from "sequelize";
-import { Comment,User,Post, sequelize } from "./newServer.js";
+import { Op, fn, col } from "sequelize";
+import { Comment, User, Post, sequelize } from "./newServer.js";
 
 
 // ////////////////////
@@ -30,7 +30,7 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 // .catch(console.log)
 
 
-///////////////////
+// /////////////////
 // Post.findAll({raw: true, where:{title: {[Op.like]: 'S%'}}})
 // .then((data)=>{
 //     // data.forEach(element => {
@@ -72,7 +72,7 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 
 
 // ///////////////////////////////
-// User.findAll({where: {age: {[Op.gt] : 25}}, raw: true})
+// User.findAll({where: {age: {[Op.and]:[{[Op.gt] : 20}, {[Op.lt] : 30}]}}, raw: true})
 // .then(console.log)
 // .catch(console.log)
 
@@ -138,7 +138,6 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 
 
 // ////////////////////////
-
 // async function run() {
 //     let t = await sequelize.transaction();
 //     try {
@@ -159,13 +158,171 @@ import { Comment,User,Post, sequelize } from "./newServer.js";
 // run()
 
 
-////////////////////
-async function run() {
-    let user = await User.findByPk(1);
-     let posts = await user.getPosts();
-     console.log(posts.map(post => post.get()));
-}
-run()
+// ////////////////////
+// async function run() {
+//     let user = await User.findByPk(1);
+//      let posts = await user.getPosts();
+//      console.log(posts.map(post => post.get()));
+// }
+// run()
+
+
+// //////////////////////
+// User.findAll({
+//     raw: true, order:[['age' , "ASC"],['username', 'DESC']]
+// })
+// .then(console.log)
+// .catch(console.log)
+
+
+// /////////////////
+// User.findAll({
+//     attributes:['age', [fn('sUm' , col('age')), 'userCount']],
+//     group: ['age'],
+//     raw: true,
+//     order:[['userCount', 'ASC']]
+// })
+// .then(console.log)
+// .catch(console.log)
+
+
+// ///////////////////////
+// User.findAll({
+//     attributes: ['id', 'username', [fn('count', col('posts.id')), 'postCount']],
+//     include: {
+//         model: Post,
+//         attributes: []
+//     },
+//     group: ['user.id'],
+//     raw: true
+// })
+//     .then(console.log)
+//     .catch(console.log)
+
+
+// // ///////////////////////
+// User.findAll({
+//     // attributes: ['id', 'username', [fn('count', col('posts.id')), 'postCount']],
+//     include: {
+//         model: Post,
+//         where: {id: 17}
+//     },
+//     raw: true
+// })
+//     .then(console.log)
+//     .catch(console.log)
+
+
+// // ////////////////
+// // User.findAll({raw: true, limit: 2, offset: (3-1) * 2})
+// //     .then(console.log)
+// //     .catch(console.log)
+
+
+// (async () => {
+//   await Promise.resolve().then(async () => {
+//     console.log("A");
+//     await null;
+//     console.log("B");
+//   });
+//   console.log("C");
+// })();
+
+// console.log("D");
+
+// (async () => {
+//   await Promise.resolve().then(async () => {
+//     console.log("A");
+//     await null;
+//     console.log("B");
+//   });
+//   console.log("C");
+// })();
+
+// console.log("D");
+
+// Promise.resolve("start")
+//   .then(() => {
+//     return {
+//       then: function (resolve, reject) {
+//         console.log("custom then called");
+//         resolve(); //becouse it not resolved it is considered as promise
+//       },
+//     };
+//   })
+//   .then(() => {
+//     console.log("next");
+//   });
+
+// const thenable = {
+//   then(resolve, reject) {
+//     console.log("thenable called");
+//     resolve("value");
+//   },
+// };
+
+// Promise.resolve(thenable).then(console.log);
+
+// setTimeout(() => console.log("timeout"), 0);
+
+// Promise.reject("error").catch((e) => {
+//   console.log("caught", e);
+// });
+
+// console.log("done");
+
+// (async function () {
+//   console.log("A");
+//   await 0;
+//   console.log("B");
+// })();
+
+// Promise.resolve().then(() => console.log("C"));
+// console.log("D");
+
+// Promise.resolve("Start")
+//   .then((res) => {
+//     console.log(res);
+//     Promise.resolve("Middle");
+//   })
+//   .then((res) => {
+//     console.log("Second:", res);
+//     return "End";
+//   })
+//   .then(console.log);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
